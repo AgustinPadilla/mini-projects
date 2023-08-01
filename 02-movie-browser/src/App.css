@@ -1,0 +1,44 @@
+
+
+#app {
+  width: 100%;
+  max-width: 800px;
+}
+
+.error {
+  color: rgb(255, 60, 60);
+  border: 1px solid rgb(255, 60, 60);
+  border-radius: 6px;
+  padding: 4px;
+}
+
+input {
+  padding: 10px;
+}
+
+main {
+  width: 100%;
+}
+
+.movies {
+  list-style: none;
+  margin: 0;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding: 0;
+  gap: 32px;
+}
+
+.movie {
+  text-align: center;
+}
+
+.movie h4, .movie p {
+  padding: 0;
+  margin: 0;
+}
+
+.movie img {
+  width: 100%;
+}
