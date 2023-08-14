@@ -33,8 +33,9 @@ function useSearch () {
 }
 
 function App () {
-  const { movies, getMovies } = useMovies()
+  const [sort, setSort] = useState(false)
   const { search, updateSearch, error } = useSearch()
+  const { movies, loading, getMovies } = useMovies({ search, sort })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -46,21 +47,32 @@ function App () {
     if (newQuery.startsWith(' ')) return
     updateSearch(newQuery)
   }
+  const handleSort = () => {
+    setSort(!sort)
+    console.log(sort)
+  }
 
   return (
     <div className='page'>
       <header>
         <form onSubmit={handleSubmit}>
           <input value={search} onChange={handleChange} type='text' placeholder='Godfather, Taxi driver, Harry Potter... ' />
-          {error
-            ? <p className='error'>{error}</p>
-            : null}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {'A -> Z'}
+            <input type='checkbox' onChange={handleSort} />
+          </div>
           <button type='submit'>Buscar</button>
         </form>
+        {error
+          ? <p className='error'>{error}</p>
+          : null}
       </header>
 
       <main>
-        <Movies movies={movies} />
+        {
+          loading ? <span>Cargando...</span> : <Movies movies={movies} />
+        }
+
       </main>
     </div>
   )
