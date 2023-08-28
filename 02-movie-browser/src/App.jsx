@@ -51,7 +51,6 @@ function App () {
     setSort(!sort)
     console.log(sort)
   }
-
   return (
     <div className='page'>
       <header>

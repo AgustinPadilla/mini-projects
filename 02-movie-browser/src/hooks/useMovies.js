@@ -29,5 +29,5 @@ export function useMovies ({ search, sort }) {
       : movies
   }, [sort, movies])
 
-  return { movies: sortedMovies, loading, getMovies }
+  return { movies: sortedMovies, loading, getMovies, error }
 }
